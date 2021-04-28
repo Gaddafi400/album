@@ -1,0 +1,32 @@
+{% extends 'photo/base.html' %}
+
+
+{% block content %}
+ <style>
+  div {
+  padding-bottom: 20px;
+}
+
+
+  </style>
+
+<div class="row" id="one">
+    {% for student in student %}
+    <div class="col">
+        <div class="card" style="width: 19.1rem;">
+            <img src="{{ student.profile_pic_url }}" class="card-img-top" alt="..." width="400" height="400">
+            <div class="card-body">
+                <h5 class="card-title">Name :: {{ student.name }}</h5>
+                <p class="card-text">Phone Number :: {{ student.phone_number }}</p>
+                <a href="https://instagram.com/{{ student.instagram }}" class="card-link"><span><ion-icon name="logo-instagram" size="large "></ion-icon></span></a>
+                <a href="https://twitter.com/{{ student.twitter }}" class="card-link"><span> <ion-icon name="logo-twitter" size="large"></ion-icon></span></a>
+                <a href="https://facebook.com/{{ student.facebook }}" class="card-link"><span><ion-icon name="logo-facebook" size="large"></ion-icon></span></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
