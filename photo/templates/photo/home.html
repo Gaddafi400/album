@@ -8,25 +8,47 @@
 <!--}-->
 
 
-  </style>
+ </style>
 
-<div class="row" id="one">
+<div class="card">
     {% for student in student %}
-    <div class="col">
-        <div class="card" style="width: 19.1rem;">
-            <img src="{{ student.profile_pic_url }}" class="card-img-top" alt="..." width="400" height="400">
-            <div class="card-body">
-                <h5 class="card-title">Name :: {{ student.name }}</h5>
-                <p class="card-text">Phone Number :: {{ student.phone_number }}</p>
-                <a href="https://instagram.com/{{ student.instagram }}" class="card-link"><span><ion-icon name="logo-instagram" size="large "></ion-icon></span></a>
-                <a href="https://twitter.com/{{ student.twitter }}" class="card-link"><span> <ion-icon name="logo-twitter" size="large"></ion-icon></span></a>
-                <a href="https://facebook.com/{{ student.facebook }}" class="card-link"><span><ion-icon name="logo-facebook" size="large"></ion-icon></span></a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+  <img
+    src="{{ student.profile_pic_url }}"
+    class="card-img-top"
+    alt="..."
+  />
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">
+      Some quick example text to build on the card title and make up the bulk of the
+      card's content.
+    </p>
+    <a href="#!" class="btn btn-primary">Button</a>
+  </div>
+     {% endfor %}
 </div>
+
+
 {% endblock %}
 
 
 
+
+
+
+<!--<div class="row" id="one">-->
+<!--    {% for student in student %}-->
+<!--    <div class="col">-->
+<!--        <div class="card" style="width: 19.1rem;">-->
+<!--            <img src="{{ student.profile_pic_url }}" class="card-img-top" alt="..." width="400" height="400">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Name :: {{ student.name }}</h5>-->
+<!--                <p class="card-text">Phone Number :: {{ student.phone_number }}</p>-->
+<!--                <a href="https://instagram.com/{{ student.instagram }}" class="card-link"><span><ion-icon name="logo-instagram" size="large "></ion-icon></span></a>-->
+<!--                <a href="https://twitter.com/{{ student.twitter }}" class="card-link"><span> <ion-icon name="logo-twitter" size="large"></ion-icon></span></a>-->
+<!--                <a href="https://facebook.com/{{ student.facebook }}" class="card-link"><span><ion-icon name="logo-facebook" size="large"></ion-icon></span></a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--</div>-->
