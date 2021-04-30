@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
+import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'cloudinary'
 
 
 
@@ -133,3 +136,14 @@ MEDIA_URL = '/media/'
 
 
 django_heroku.settings(locals())
+
+cloudinary.config(
+  cloud_name="gaddafi",
+  api_key="558845851752313",
+  api_secret="4R4KR3HA2NJePLU6PLmQK3S4SUg",
+  secure=True
+)
+
+CLOUDINARY = {
+    'max_length': 500,
+}

@@ -1,54 +1,85 @@
 {% extends 'photo/base.html' %}
-
+{% load cloudinary %}
 
 {% block content %}
- <style>
-  div {
-  padding-bottom: 15px;
+<style>
+body {
+    background: #f4f4f4;
+  }
+
+  .banner {
+    background: #a770ef;
+    background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+    background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+ }
+#one{
+   width:100%;
+   height:360px;
+   object-fit:cover;
+   border-radius:5px;
+
 }
+</style>
 
 
- </style>
+<div class="container-fluid">
+    <div class="px-lg-5">
 
-<div class="card">
-    {% for student in student %}
-  <img
-    src="{{ student.profile_pic_url }}"
-    class="card-img-top"
-    alt="..."
-  />
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
-    </p>
-    <a href="#!" class="btn btn-primary">Button</a>
-  </div>
-     {% endfor %}
+        <!-- For demo purpose -->
+        <div class="row py-5">
+            <div class="col-lg-12 mx-auto">
+                <div class="text-white p-5 shadow-sm rounded banner">
+                    <h3 class="display-6">Graduation Album</h3>
+
+                </div>
+            </div>
+        </div>
+        <!-- End -->
+
+        <div class="row">
+            <!-- Gallery item -->
+            {% for i in student %}
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+
+                <div class="bg-white rounded shadow-sm"><a href="{% url 'student' i.id %}"> <img src="{{ i.image.url }}"
+                                                                                                 alt=""
+                                                                                                 class="img-fluid card-img-top"
+                                                                                                 id="one"> </a>
+                    <div class="p-4">
+<!--                        <h6 class="text-dark"></h6>-->
+                       <p class="small text-muted mb-0">Name: {{ i.name }}</p>
+                        <p class="small text-muted mb-0">Phone: {{ i.phone_number }}</p>
+                        <div class="d-flex align-items-center justify-content-between px-3 py-2 mt-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- End -->
+
+        </div>
+        {% if is_paginated %}
+
+        {% if page_obj.has_previous %}
+        <a class="btn btn-outline-success mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-success mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <a class="btn btn-success mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-success mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <a class="btn btn-outline-success mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-success mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+        {% endif %}
+    </div>
 </div>
 
 
 {% endblock %}
-
-
-
-
-
-
-<!--<div class="row" id="one">-->
-<!--    {% for student in student %}-->
-<!--    <div class="col">-->
-<!--        <div class="card" style="width: 19.1rem;">-->
-<!--            <img src="{{ student.profile_pic_url }}" class="card-img-top" alt="..." width="400" height="400">-->
-<!--            <div class="card-body">-->
-<!--                <h5 class="card-title">Name :: {{ student.name }}</h5>-->
-<!--                <p class="card-text">Phone Number :: {{ student.phone_number }}</p>-->
-<!--                <a href="https://instagram.com/{{ student.instagram }}" class="card-link"><span><ion-icon name="logo-instagram" size="large "></ion-icon></span></a>-->
-<!--                <a href="https://twitter.com/{{ student.twitter }}" class="card-link"><span> <ion-icon name="logo-twitter" size="large"></ion-icon></span></a>-->
-<!--                <a href="https://facebook.com/{{ student.facebook }}" class="card-link"><span><ion-icon name="logo-facebook" size="large"></ion-icon></span></a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    {% endfor %}-->
-<!--</div>-->

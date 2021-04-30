@@ -1,0 +1,32 @@
+ {% extends 'photo/base.html' %}
+
+
+{% block content %}
+ <style>
+
+ </style>
+
+<div class="card">
+    <span class="m-3"> <a href="{% url 'home' %}" class="btn btn-danger">Go Back</a></span>
+
+
+  <img
+    src="{{ object.image.url }}"
+    class="card-img-top"
+    alt="..."
+  />
+  <div class="card-body">
+    <h5 class="card-title">Name :: {{ object.name }}</h5>
+      <p class="card-text">Phone Number :: {{ object.phone_number }}</p>
+      <p class="card-text">Phone Number :: {{ object.phone_number }}</p>
+
+      <a href="#" class="btn success"> <ion-icon name="logo-instagram"></ion-icon></a>
+
+
+  </div>
+
+</div>
+
+
+{% endblock %}
+
